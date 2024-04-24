@@ -8,6 +8,7 @@ public class CollectMushrooms implements QuestObserver{
     private ArrayList<QuestMaker> questMakers = new ArrayList<>();
 
     void takeRewardForHero(QuestMaker hero){
+        hero.getEquipment().removeItemsFromBag(new Item(this.itemToCollect), this.itemsToReward);
         hero.getReward(this);
     }
 

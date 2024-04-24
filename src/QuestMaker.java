@@ -4,4 +4,5 @@ public interface QuestMaker {
     void deleteQuest(QuestObserver o);
     void notifyQuest(String i);
     String getName();
+    Equipment getEquipment();
 }

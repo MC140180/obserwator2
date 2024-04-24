@@ -59,6 +59,10 @@ public class Hero implements QuestMaker{
         }
     }
 
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
     @Override
     public void getReward(QuestObserver o) {
         o.reward();
