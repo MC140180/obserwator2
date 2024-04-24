@@ -2,13 +2,17 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class CollectMushrooms implements QuestObserver {
-    private String itemToCollect = "mushrooms";
+    private Item itemToCollect;
     private String questName = "collectMushroom";
     private Integer itemsToReward = 5;
     private ArrayList<QuestMaker> questMakers = new ArrayList<>();
 
+    public CollectMushrooms(Item itemToCollect) {
+        this.itemToCollect = itemToCollect;
+    }
+
     void giveRewardForHero(QuestMaker hero) {
-        hero.getEquipment().removeItemsFromBag(new Item(this.itemToCollect), this.itemsToReward);
+        hero.getEquipment().removeItemsFromBag(this.itemToCollect, this.itemsToReward);
         hero.getReward(this);
     }
 
@@ -37,7 +41,7 @@ public class CollectMushrooms implements QuestObserver {
     }
 
     @Override
-    public String itemToCollect() {
+    public Item itemToCollect() {
         return itemToCollect;
     }
 

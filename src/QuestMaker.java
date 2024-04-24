@@ -5,7 +5,7 @@ public interface QuestMaker {
 
     void deleteQuest(QuestObserver o);
 
-    void notifyQuest(String i);
+    void notifyQuest(Item i);
 
     String getName();
 

@@ -3,7 +3,7 @@ public interface QuestObserver {
 
     void update(Integer i, QuestMaker hero);
 
-    String itemToCollect();
+    Item itemToCollect();
 
     Item reward();
 

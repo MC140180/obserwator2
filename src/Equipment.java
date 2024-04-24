@@ -1,18 +1,18 @@
 import java.util.HashMap;
 
 public class Equipment {
-    private HashMap<String, Integer> itemsInBag;
+    private HashMap<Item, Integer> itemsInBag;
 
     public Equipment() {
         this.itemsInBag = new HashMap<>();
     }
 
-    public HashMap<String, Integer> getItemsInBag() {
+    public HashMap<Item, Integer> getItemsInBag() {
         return itemsInBag;
     }
 
     public void addItemsToBag(Item item, Integer quantity) {
-        this.itemsInBag.compute(item.getName(), (key, oldValue) -> {
+        this.itemsInBag.compute(item, (key, oldValue) -> {
             if (oldValue == null) {
                 return quantity;
             } else {
@@ -22,7 +22,7 @@ public class Equipment {
     }
 
     public void removeItemsFromBag(Item item, Integer quantity) {
-        this.itemsInBag.computeIfPresent(item.getName(), (key, oldValue) -> {
+        this.itemsInBag.computeIfPresent(item, (key, oldValue) -> {
                     return Math.max(oldValue - quantity, 0);
                 }
         );

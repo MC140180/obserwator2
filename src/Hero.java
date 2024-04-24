@@ -14,7 +14,7 @@ public class Hero implements QuestMaker {
 
     void collectItem(Item i) {
         this.equipment.addItemsToBag(i, 1);
-        this.notifyQuest(i.getName());
+        this.notifyQuest(i);
     }
 
     void startQuest(QuestObserver quest) {
@@ -47,7 +47,7 @@ public class Hero implements QuestMaker {
     }
 
     @Override
-    public void notifyQuest(String i) {
+    public void notifyQuest(Item i) {
         ArrayList<QuestObserver> questsCopy = new ArrayList<>(this.quests);
         for (QuestObserver quest : questsCopy) {
             if (Objects.equals(quest.itemToCollect(), i)) {
