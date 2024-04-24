@@ -19,7 +19,6 @@ public class Hero implements QuestMaker {
 
     void startQuest(Quest quest) {
         this.registerQuest(quest);
-        quest.addQuestMaker(this);
         this.notifyQuest(quest.itemToCollect());
     }
     public Equipment getEquipment() {
@@ -33,7 +32,7 @@ public class Hero implements QuestMaker {
                 return;
             }
         }
-
+        quest.addQuestMaker(this);
         this.quests.add(quest);
     }
 
