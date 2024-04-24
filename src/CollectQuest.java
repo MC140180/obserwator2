@@ -13,7 +13,7 @@ public abstract class CollectQuest implements Quest {
     }
 
     void giveRewardForHero(QuestMaker hero) {
-        hero.getReward(this);
+        this.reward(hero);
     }
 
     @Override

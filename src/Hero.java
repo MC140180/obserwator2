@@ -51,10 +51,5 @@ public class Hero implements QuestMaker {
             }
         }
     }
-
-    @Override
-    public void getReward(Quest o) {
-        o.reward(this);
-    }
 }
 
