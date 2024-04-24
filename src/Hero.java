@@ -3,23 +3,20 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class Hero implements QuestMaker{
-    private HashMap<String, Integer> itemsInBag;
+    private Equipment equipment;
     private ArrayList<QuestObserver> quests;
     private String name;
 
     public Hero(String name) {
         this.name = name;
-        this.itemsInBag = new HashMap<>();
+        this.equipment = new Equipment();
         this.quests = new ArrayList<>();
     }
 
     void collectItem(Item i){
-      if(this.itemsInBag.containsKey(i.getName())){
-          this.itemsInBag.put(i.getName(), this.itemsInBag.get(i.getName()) + 1);
-          this.notifyQuest(i.getName());
-          return;
-      };
-      this.itemsInBag.put(i.getName(), 1);
+
+        this.equipment.addItemsToBag(i,  1);
+
       this.notifyQuest(i.getName());
     }
 
@@ -57,7 +54,7 @@ public class Hero implements QuestMaker{
         ArrayList<QuestObserver> questsCopy = new ArrayList<>(this.quests);
         for(QuestObserver quest: questsCopy){
             if(Objects.equals(quest.itemToCollect(), i)){
-                quest.update(this.itemsInBag.get(i), this);
+                quest.update(this.equipment.getItemsInBag().get(i), this);
             }
         }
     }
