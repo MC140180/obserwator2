@@ -1,13 +1,11 @@
 public interface QuestMaker {
-    void getReward(QuestObserver o);
+    void getReward(Quest o);
 
-    void registerQuest(QuestObserver o);
+    void registerQuest(Quest o);
 
-    void deleteQuest(QuestObserver o);
+    void deleteQuest(Quest o);
 
     void notifyQuest(Item i);
-
-    String getName();
 
     Equipment getEquipment();
 }

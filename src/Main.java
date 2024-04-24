@@ -4,14 +4,14 @@ public class Main {
 
 
         Item mushroom = ItemsFactory.getItem("mushroom");
-        andrzej.startQuest(new CollectMushrooms(mushroom));
+        andrzej.startQuest(new CollectMushrooms());
         andrzej.collectItem(ItemsFactory.getItem("mushroom"));
         andrzej.collectItem(ItemsFactory.getItem("mushroom"));
         andrzej.collectItem(ItemsFactory.getItem("mushroom"));
         andrzej.collectItem(ItemsFactory.getItem("mushroom"));
         andrzej.collectItem(ItemsFactory.getItem("mushroom"));
 
-        andrzej.startQuest(new CollectMushrooms(mushroom));
+        andrzej.startQuest(new CollectMushrooms());
         andrzej.collectItem(ItemsFactory.getItem("mushroom"));
         andrzej.collectItem(ItemsFactory.getItem("mushroom"));
         andrzej.collectItem(ItemsFactory.getItem("mushroom"));
@@ -23,7 +23,11 @@ public class Main {
         andrzej.collectItem(ItemsFactory.getItem("mushroom"));
         andrzej.collectItem(ItemsFactory.getItem("mushroom"));
         andrzej.collectItem(ItemsFactory.getItem("mushroom"));
-        andrzej.startQuest(new CollectMushrooms(mushroom));
+        andrzej.startQuest(new CollectMushrooms());
 
+        andrzej.collectItem(ItemsFactory.getItem("steel"));
+        andrzej.collectItem(ItemsFactory.getItem("steel"));
+        andrzej.collectItem(ItemsFactory.getItem("steel"));
+        andrzej.startQuest(new CollectSteel());
     }
 }

@@ -3,7 +3,7 @@ import java.util.Objects;
 
 public class Hero implements QuestMaker {
     private Equipment equipment;
-    private ArrayList<QuestObserver> quests;
+    private ArrayList<Quest> quests;
     private String name;
 
     public Hero(String name) {
@@ -17,15 +17,17 @@ public class Hero implements QuestMaker {
         this.notifyQuest(i);
     }
 
-    void startQuest(QuestObserver quest) {
+    void startQuest(Quest quest) {
         this.registerQuest(quest);
         quest.addQuestMaker(this);
         this.notifyQuest(quest.itemToCollect());
     }
-
+    public Equipment getEquipment() {
+        return equipment;
+    }
     @Override
-    public void registerQuest(QuestObserver quest) {
-        for (QuestObserver quest1 : quests) {
+    public void registerQuest(Quest quest) {
+        for (Quest quest1 : quests) {
             if (Objects.equals(quest1.getQuestName(), quest.getQuestName())) {
                 System.out.println("this quest is already started");
                 return;
@@ -36,33 +38,24 @@ public class Hero implements QuestMaker {
     }
 
     @Override
-    public void deleteQuest(QuestObserver o) {
+    public void deleteQuest(Quest o) {
         System.out.println(this.quests);
         this.quests.remove(o);
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
     public void notifyQuest(Item i) {
-        ArrayList<QuestObserver> questsCopy = new ArrayList<>(this.quests);
-        for (QuestObserver quest : questsCopy) {
+        ArrayList<Quest> questsCopy = new ArrayList<>(this.quests);
+        for (Quest quest : questsCopy) {
             if (Objects.equals(quest.itemToCollect(), i)) {
                 quest.update(this.equipment.getItemsInBag().get(i), this);
             }
         }
     }
 
-    public Equipment getEquipment() {
-        return equipment;
-    }
-
     @Override
-    public void getReward(QuestObserver o) {
-        o.reward();
+    public void getReward(Quest o) {
+        o.reward(this);
     }
 }
 

@@ -1,11 +1,11 @@
-public interface QuestObserver {
+public interface Quest {
     void addQuestMaker(QuestMaker hero);
 
     void update(Integer i, QuestMaker hero);
 
     Item itemToCollect();
 
-    Item reward();
+    Item reward(QuestMaker hero);
 
     String getQuestName();
 }
