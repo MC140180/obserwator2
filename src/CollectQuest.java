@@ -49,7 +49,7 @@ public abstract class CollectQuest implements Quest {
     public Item reward(QuestMaker hero) {
         hero.getEquipment().removeItemsFromBag(this.itemToCollect, this.itemsToReward);
         hero.getEquipment().addItemsToBag(this.questReward, 1);
-        System.out.println("otrzymano nagrode za zebranie " + this.itemsToReward + " " + this.itemToCollect);
+        System.out.println("otrzymano nagrode za zebranie " + this.itemsToReward + " " + this.itemToCollect.getName());
         return this.questReward;
     }
 
