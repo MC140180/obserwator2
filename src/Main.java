@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-     Hero andrzej = new Hero("andrzej");
+        Hero andrzej = new Hero("andrzej");
 
         andrzej.startQuest(new CollectMushrooms());
 

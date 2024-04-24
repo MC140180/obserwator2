@@ -12,18 +12,19 @@ public class Equipment {
     }
 
     public void addItemsToBag(Item item, Integer quantity) {
-            this.itemsInBag.compute(item.getName(), (key, oldValue) -> {
-                if (oldValue == null) {
-                    return quantity;
-                } else {
-                    return oldValue + quantity;
-                }
-            });
+        this.itemsInBag.compute(item.getName(), (key, oldValue) -> {
+            if (oldValue == null) {
+                return quantity;
+            } else {
+                return oldValue + quantity;
+            }
+        });
     }
+
     public void removeItemsFromBag(Item item, Integer quantity) {
         this.itemsInBag.computeIfPresent(item.getName(), (key, oldValue) -> {
-                return Math.max(oldValue - quantity, 0);
-            }
+                    return Math.max(oldValue - quantity, 0);
+                }
         );
     }
 }

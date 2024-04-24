@@ -1,29 +1,30 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class CollectMushrooms implements QuestObserver{
+public class CollectMushrooms implements QuestObserver {
     private String itemToCollect = "mushrooms";
     private String questName = "collectMushroom";
     private Integer itemsToReward = 5;
     private ArrayList<QuestMaker> questMakers = new ArrayList<>();
 
-    void takeRewardForHero(QuestMaker hero){
+    void takeRewardForHero(QuestMaker hero) {
         hero.getEquipment().removeItemsFromBag(new Item(this.itemToCollect), this.itemsToReward);
         hero.getReward(this);
     }
 
     @Override
     public void update(Integer i, QuestMaker hero) {
-        if(!this.questMakers.contains(hero)){
+        if (!this.questMakers.contains(hero)) {
             System.out.println("This hero haven't start this quest");
             return;
         }
-        if(Objects.equals(i, itemsToReward)){
+        if (Objects.equals(i, itemsToReward)) {
             takeRewardForHero(hero);
             this.questMakers.remove(hero);
             hero.deleteQuest(this);
         }
     }
+
     @Override
     public void addQuestMaker(QuestMaker hero) {
         for (QuestMaker existingHero : this.questMakers) {
